@@ -1,0 +1,31 @@
+FROM balenalib/%%BALENA_ARCH%%-ubuntu:focal-run
+
+RUN install_packages exfat-fuse \
+    exfat-utils \
+    grep \
+    ntfs-3g \
+    psmisc \
+    samba \
+    util-linux
+
+RUN addgroup smbgroup 
+
+COPY udev/usb.rules /etc/udev/rules.d/usb.rules
+
+WORKDIR /usr/src
+COPY config config
+COPY scripts scripts
+RUN chmod +x scripts/*
+RUN ln -fs /usr/src/scripts/drive.sh /usr/local/bin/drive
+
+VOLUME ["/etc", \
+    "/var/cache/samba", \
+    "/var/lib/samba", \
+    "/var/log/samba",\
+    "/run/samba"]
+
+ENV UDEV=on
+
+EXPOSE 139 445
+
+CMD ["bash", "scripts/start.sh", "--foreground", "--log-stdout", "--no-process-group"]
