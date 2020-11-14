@@ -18,7 +18,7 @@ Change the username and password of the Samba shares by setting the following en
 You can read more about environment variables [here](https://www.balena.io/docs/learn/manage/serv-vars/#fleet-environment-and-service-variables).
 
 ## Usage
-Plug in your USB drive to automatically share it over the network using Samba.  The USB drive will automatically have a private share with a name prefixed with "Shared-".  For example, a device with a device path of `/dev/sda1` will be shared as `Shared-sda1`.
+Plug in your USB drive to automatically share it over the network using Samba.  The share name is the `ID_SERIAL` of the disk shown using `udevadm info`.  This makes it easy to know which drives are currently shared.
 
 Run the command `drive remove <disk>` to safely remove the USB drive from the Samba shares and unmount it from the system to be unplugged. The `<disk>` is the device name.  Unplugging a USB drive automatically removes the share name and cleans up the mount path.
 
