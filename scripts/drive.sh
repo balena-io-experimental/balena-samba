@@ -14,7 +14,8 @@ function attach {
 function create_config {
   DISK=$1
   SHARE_PATH=$2
-  echo "[Shared-${DISK}]
+  SHARE_NAME=$(udevadm info -n /dev/${DISK} | grep ID_SERIAL= | cut -d '=' -f 2)
+  echo "[${SHARE_NAME}]
   path = ${SHARE_PATH}
   valid users = @smbgroup
   guest ok = no
