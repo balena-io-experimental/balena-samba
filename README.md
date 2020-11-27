@@ -9,7 +9,7 @@
 ## Setup and Configuration
 Running this project is as simple as deploying it to a balenaCloud application. You can do it in just one click by using the button below:
 
-[![deploy button](https://balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balena-io-playground/balena-samba&defaultDeviceType=raspberrypi4-64)
+[![deploy button](https://balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balena-io-playground/balena-samba&defaultDeviceType=raspberrypi4-64)
 
 Change the username and password of the Samba shares by setting the following environment variables for your application or device:
 - `SAMBA_USERNAME` - the default is `balena`
