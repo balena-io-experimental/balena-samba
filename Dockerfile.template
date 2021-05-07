@@ -25,6 +25,8 @@ VOLUME ["/etc", \
     "/run/samba"]
 
 ENV UDEV=on
+ENV CONFIG_DIR=/usr/src/config
+ENV SAMBA_ROOT=/samba
 
 EXPOSE 139 445
 

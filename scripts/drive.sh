@@ -1,7 +1,4 @@
 #!/bin/bash
-# DEFAULT SETTINGS
-export CONFIG_DIR=/usr/src/config
-export SAMBA_ROOT=/samba
 
 function attach {
   DISK=$1
@@ -14,8 +11,8 @@ function attach {
 function create_config {
   DISK=$1
   SHARE_PATH=$2
-  SHARE_NAME=$(udevadm info -n /dev/${DISK} | grep ID_SERIAL= | cut -d '=' -f 2)
-  echo "[${SHARE_NAME}]
+  SHARE_NAME=$(udevadm info -n /dev/${DISK} | grep ID_SERIAL= | cut -d'=' -f2 | cut -d":" -f1)
+  echo "[${DISK}-${SHARE_NAME}]
   path = ${SHARE_PATH}
   valid users = @smbgroup
   guest ok = no
