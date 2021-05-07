@@ -10,7 +10,7 @@ function setup_user {
 }
 
 function main {
-  cat config/smb-global.conf > /etc/samba/smb.conf
+  cat ${CONFIG_DIR}/smb-global.conf > /etc/samba/smb.conf
   for DISK in `lsblk -o KNAME | egrep sd[a-z][0-9]`
   do
     drive attach $DISK
