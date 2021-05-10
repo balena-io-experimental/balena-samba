@@ -66,7 +66,7 @@ function reload_samba {
 
 function remove {
   DISK=$1
-  rm -f ${CONFIG_DIR}/disk-${DISK}.conf 
+  rm -f ${CONFIG_DIR}/Shared-${DISK}.conf 
   unmount_disk $DISK $SAMBA_ROOT/$DISK
 }
 
